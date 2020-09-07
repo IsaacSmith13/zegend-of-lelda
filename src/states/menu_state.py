@@ -21,6 +21,24 @@ UNUSED_SCREEN_HEIGHT_MODIFIER = 1 - USABLE_SCREEN_HEIGHT_MODIFIER
 MENU_Y_OFFSET = DISPLAY_HEIGHT * UNUSED_SCREEN_HEIGHT_MODIFIER / 2
 
 
+def build_menu(name):
+    options = []
+
+    x = DISPLAY_WIDTH / 2
+    y = MENU_Y_OFFSET
+
+    for menu_option in MENU_OPTIONS[name]:
+        options.append(DotMap(
+            name=menu_option,
+            center=(x, y),
+            selected=False
+        ))
+
+        y += USABLE_SCREEN_HEIGHT / len(MENU_OPTIONS[name])
+
+    return options
+
+
 class MenuState(GameState):
     def __init__(self,  display, name, on_quit, on_return_to_main_menu, on_start, background_color=WHITE):
         if name not in MENU_NAMES:
@@ -33,24 +51,7 @@ class MenuState(GameState):
         self.on_quit = on_quit
         self.on_return_to_main_menu = on_return_to_main_menu
         self.on_start = on_start
-        self.options = self._build_menu(name)
-
-    def _build_menu(self, name):
-        options = []
-
-        x = DISPLAY_WIDTH / 2
-        y = MENU_Y_OFFSET
-
-        for menu_option in MENU_OPTIONS[name]:
-            options.append(DotMap(
-                name=menu_option,
-                center=(x, y),
-                selected=False
-            ))
-
-            y += USABLE_SCREEN_HEIGHT / len(MENU_OPTIONS[name])
-
-        return options
+        self.options = build_menu(name)
 
     def _paint(self):
         self.display.fill(self.background_color)
