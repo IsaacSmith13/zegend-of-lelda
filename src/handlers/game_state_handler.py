@@ -1,7 +1,7 @@
 import sys
 import pygame
 from ..states.menu_state import MenuState, MENU_NAMES
-from ..states.level_state import LevelState
+from ..states.level_state import LevelState, LEVEL_NAMES
 
 
 class GameStateHandler:
