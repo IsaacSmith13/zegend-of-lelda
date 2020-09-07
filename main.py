@@ -1,6 +1,6 @@
 import os
 import pygame
-from configuration import DISPLAY_HEIGHT, DISPLAY_WIDTH, FPS, GAME_NAME
+from src.configuration.configuration import DISPLAY_HEIGHT, DISPLAY_WIDTH, FPS, GAME_NAME
 
 ROOT_PATH = os.path.dirname(__file__)
 
