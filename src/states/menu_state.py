@@ -11,7 +11,7 @@ MENU_NAMES = DotMap(main="main", pause="pause")
 ALL_MENU_OPTIONS = DotMap(start="Start", resume="Resume", main_menu="Main Menu", quit="Quit")
 
 MENU_OPTIONS = DotMap({
-    MENU_NAMES.main: [ALL_MENU_OPTIONS.start, ALL_MENU_OPTIONS.main_menu, ALL_MENU_OPTIONS.quit],
+    MENU_NAMES.main: [ALL_MENU_OPTIONS.start, ALL_MENU_OPTIONS.quit],
     MENU_NAMES.pause: [ALL_MENU_OPTIONS.resume, ALL_MENU_OPTIONS.main_menu, ALL_MENU_OPTIONS.quit]
 })
 
