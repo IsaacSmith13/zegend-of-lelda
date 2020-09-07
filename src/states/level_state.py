@@ -10,3 +10,6 @@ class LevelState(GameState):
 
     def tick(self, delta):
         self._paint()
+
+    def get_name(self):
+        return self.name
