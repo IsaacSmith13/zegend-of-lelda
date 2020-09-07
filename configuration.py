@@ -1,0 +1,6 @@
+GAME_NAME = "Zegend of Lelda"
+
+FPS = 60
+
+DISPLAY_HEIGHT = 540
+DISPLAY_WIDTH = 960
