@@ -31,5 +31,6 @@
     "python.linting.pycodestyleArgs": [
       "--max-line-length=200"
     ],
+    "editor.formatOnSave": true,
   }
 }
