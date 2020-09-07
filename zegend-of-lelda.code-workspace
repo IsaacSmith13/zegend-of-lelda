@@ -1,9 +1,9 @@
 {
   "folders": [
-	{
-		"path": "."
-	}
-],
+    {
+      "path": "."
+    }
+  ],
   "settings": {
     "files.exclude": {
       "**/.classpath": true,
@@ -11,7 +11,7 @@
       "**/.settings": true,
       "**/.factorypath": true
     },
-    "editor.tabSize": 2,
+    "editor.tabSize": 4,
     "python.linting.pylintEnabled": true,
     "python.languageServer": "Jedi",
     "python.pythonPath": "/usr/bin/python3",
