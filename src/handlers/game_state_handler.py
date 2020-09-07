@@ -14,6 +14,7 @@ class GameStateHandler:
             display=self.display,
             name=MENU_NAMES.main,
             on_quit=self.quit_game,
+            on_resume=self.unpause,
             on_return_to_main_menu=self.return_to_main_menu,
             on_start=self.start_game
         )]
@@ -29,14 +30,14 @@ class GameStateHandler:
         return self.game_states
 
     def pause(self):
-        if isinstance(self._get_current_game_state(), LevelState):
-            self.game_states.append(MenuState(
-                display=self.display,
-                name=MENU_NAMES.pause,
-                on_quit=self.quit_game,
-                on_return_to_main_menu=self.return_to_main_menu,
-                on_start=self.start_game
-            ))
+        self.game_states.append(MenuState(
+            display=self.display,
+            name=MENU_NAMES.pause,
+            on_quit=self.quit_game,
+            on_resume=self.unpause,
+            on_return_to_main_menu=self.return_to_main_menu,
+            on_start=self.start_game
+        ))
 
     def unpause(self):
         if self._get_current_game_state().get_name() == MENU_NAMES.pause:
@@ -46,7 +47,12 @@ class GameStateHandler:
         self.game_states = self._get_clean_game_state()
 
     def start_game(self):
-        pass
+        self.game_states.append(LevelState(
+            display=self.display,
+            name=LEVEL_NAMES.vakariko_killage,
+            on_pause=self.pause,
+            on_quit=self.quit_game
+        ))
 
     def quit_game(self):
         pygame.quit()

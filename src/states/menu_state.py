@@ -42,14 +42,15 @@ def build_menu(name):
 
 
 class MenuState(GameState):
-    def __init__(self,  display, name, on_quit, on_return_to_main_menu, on_start):
-        if name not in MENU_NAMES:
+    def __init__(self,  display, name, on_quit, on_resume, on_return_to_main_menu, on_start):
+        if name not in MENU_NAMES.values():
             raise ValueError(f'Attempted to push menu {name} which is invalid')
 
         self.display = display
         self.just_clicked = False
         self.name = name
         self.on_quit = on_quit
+        self.on_resume = on_resume
         self.on_return_to_main_menu = on_return_to_main_menu
         self.on_start = on_start
         self.options = build_menu(name)
@@ -95,6 +96,8 @@ class MenuState(GameState):
             self.on_return_to_main_menu()
         elif option == ALL_MENU_OPTIONS.quit:
             self.on_quit()
+        elif option == ALL_MENU_OPTIONS.resume:
+            self.on_resume()
 
     def tick(self, delta):
         self.just_clicked = False
