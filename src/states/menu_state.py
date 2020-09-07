@@ -20,6 +20,8 @@ USABLE_SCREEN_HEIGHT = DISPLAY_HEIGHT * USABLE_SCREEN_HEIGHT_MODIFIER
 UNUSED_SCREEN_HEIGHT_MODIFIER = 1 - USABLE_SCREEN_HEIGHT_MODIFIER
 MENU_Y_OFFSET = DISPLAY_HEIGHT * UNUSED_SCREEN_HEIGHT_MODIFIER / 2
 
+MENU_BACKGROUND_COLOR = WHITE
+
 
 def build_menu(name):
     options = []
@@ -40,11 +42,10 @@ def build_menu(name):
 
 
 class MenuState(GameState):
-    def __init__(self,  display, name, on_quit, on_return_to_main_menu, on_start, background_color=WHITE):
+    def __init__(self,  display, name, on_quit, on_return_to_main_menu, on_start):
         if name not in MENU_NAMES:
             raise ValueError(f'Attempted to push menu {name} which is invalid')
 
-        self.background_color = background_color
         self.display = display
         self.just_clicked = False
         self.name = name
@@ -54,7 +55,7 @@ class MenuState(GameState):
         self.options = build_menu(name)
 
     def _paint(self):
-        self.display.fill(self.background_color)
+        self.display.fill(MENU_BACKGROUND_COLOR)
 
         for option in self.options:
             option_text = create_text(
@@ -66,8 +67,6 @@ class MenuState(GameState):
             option.rect = option_text.get_rect()
             option.rect.center = option.center
             self.display.blit(option_text, option.rect)
-
-        pygame.display.update()
 
     def _handle_events(self):
         for event in pygame.event.get():

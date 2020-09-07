@@ -23,6 +23,7 @@ class GameStateHandler:
 
     def tick(self, delta):
         self._get_current_game_state().tick(delta)
+        pygame.display.update()
 
     def get_game_states(self):
         return self.game_states
