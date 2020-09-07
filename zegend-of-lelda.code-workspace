@@ -1,0 +1,35 @@
+{
+  "folders": [
+	{
+		"path": "."
+	}
+],
+  "settings": {
+    "files.exclude": {
+      "**/.classpath": true,
+      "**/.project": true,
+      "**/.settings": true,
+      "**/.factorypath": true
+    },
+    "editor.tabSize": 2,
+    "python.linting.pylintEnabled": true,
+    "python.languageServer": "Jedi",
+    "python.pythonPath": "/usr/bin/python3",
+    "python.linting.pylintArgs": [
+      "--unsafe-load-any-extension=y",
+      "--disable=C0114",
+      "--disable=C0115",
+      "--disable=C0116",
+      "--good-names=i,j,p4,_,a,b,c,d,e,f,g,h,i,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z",
+      "--disable=C0301"
+    ],
+    "http.proxyStrictSSL": false,
+    "workbench.colorTheme": "Tomorrow Night Blue",
+    "python.formatting.autopep8Args": [
+      "--max-line-length=200"
+    ],
+    "python.linting.pycodestyleArgs": [
+      "--max-line-length=200"
+    ],
+  }
+}
