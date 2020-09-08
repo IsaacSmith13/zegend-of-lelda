@@ -1,9 +1,6 @@
-import os
 import pygame
 from src.configuration.configuration import DISPLAY_HEIGHT, DISPLAY_WIDTH, FPS, GAME_NAME
 from src.handlers.game_state_handler import GameStateHandler
-
-ROOT_PATH = os.path.dirname(__file__)
 
 
 def main():
