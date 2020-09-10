@@ -5,7 +5,8 @@ from definitions import ROOT_PATH
 
 FILE_TYPES = DotMap(
     audio=DotMap(extension=".ogg", path="audio"),
-    level=DotMap(extension=".tmx", path="levels")
+    level=DotMap(extension=".tmx", path="levels"),
+    spritesheet=DotMap(extension=".png", path="spritesheets")
 )
 
 
