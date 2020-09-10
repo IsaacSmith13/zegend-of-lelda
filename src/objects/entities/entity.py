@@ -70,23 +70,24 @@ class Entity(pygame.sprite.Sprite):
 
     def tick(self, delta):
         if len(self.current_directions) == 0:
-            return
+            self.sprite_sheet.reset_frame()
+        else:
+            right = down = left = up = False
 
-        right = down = left = up = False
+            for direction in self.current_directions:
+                if direction == DIRECTIONS.right and not left:
+                    right = True
+                    self.set_x(self.x + self.movespeed * delta)
+                elif direction == DIRECTIONS.down and not up:
+                    down = True
+                    self.set_y(self.y + self.movespeed * delta)
+                elif direction == DIRECTIONS.left and not right:
+                    left = True
+                    self.set_x(self.x - self.movespeed * delta)
+                elif direction == DIRECTIONS.up and not down:
+                    up = True
+                    self.set_y(self.y - self.movespeed * delta)
 
-        for direction in self.current_directions:
-            if direction == DIRECTIONS.right and not left:
-                right = True
-                self.set_x(self.x + self.movespeed * delta)
-            elif direction == DIRECTIONS.down and not up:
-                down = True
-                self.set_y(self.y + self.movespeed * delta)
-            elif direction == DIRECTIONS.left and not right:
-                left = True
-                self.set_x(self.x - self.movespeed * delta)
-            elif direction == DIRECTIONS.up and not down:
-                up = True
-                self.set_y(self.y - self.movespeed * delta)
+            self.sprite_sheet.update_frame(delta=delta, direction=self.current_directions[0])
 
-        self.sprite_sheet.update_frame(delta=delta, direction=self.current_directions[0])
         self.image = self.sprite_sheet.get_frame()
