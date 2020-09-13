@@ -1,10 +1,10 @@
-import pygame
-from src.objects.entities.sprite_sheet import SpriteSheet, ENTITIES
 from src.configuration.configuration import GLOBAL_OBJECT_SIZE
 from src.models.entities import DIRECTIONS
+from src.objects.entities.sprite_sheet import SpriteSheet, ENTITIES
+from src.objects.object import Object
 
 
-class Entity(pygame.sprite.Sprite):
+class Entity(Object):
     def __init__(
             self,
             frames_per_animation,
@@ -15,14 +15,8 @@ class Entity(pygame.sprite.Sprite):
             height=GLOBAL_OBJECT_SIZE,
             width=GLOBAL_OBJECT_SIZE
     ):
-        super().__init__()
-
         self.current_directions = []
-        self.height = height
         self.movespeed = movespeed
-        self.width = width
-        self.x = x
-        self.y = y
 
         self.sprite_sheet = SpriteSheet(
             ENTITIES[name],
@@ -31,34 +25,20 @@ class Entity(pygame.sprite.Sprite):
             width=width
         )
 
-        self.image = self.sprite_sheet.get_frame()
-        self.rect = pygame.Rect(x, y, width, height)
-
-    def get_height(self):
-        return self.height
-
-    def get_width(self):
-        return self.width
+        super().__init__(
+            collidable=True,
+            image=self.sprite_sheet.get_frame(),
+            height=height,
+            width=width,
+            x=x,
+            y=y
+        )
 
     def get_movespeed(self):
         return self.movespeed
 
     def set_movespeed(self, movespeed):
         self.movespeed = movespeed
-
-    def get_x(self):
-        return self.x
-
-    def set_x(self, x):
-        self.x = x
-        self.rect = pygame.Rect(x, self.y, self.width, self.height)
-
-    def get_y(self):
-        return self.y
-
-    def set_y(self, y):
-        self.y = y
-        self.rect = pygame.Rect(self.x, y, self.width, self.height)
 
     def add_direction(self, direction):
         if direction not in self.current_directions:

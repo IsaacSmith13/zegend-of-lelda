@@ -21,7 +21,8 @@
       "--disable=C0115",
       "--disable=C0116",
       "--good-names=i,j,p4,_,a,b,c,d,e,f,g,h,i,k,l,m,n,o,p,q,r,s,t,u,v,w,x,y,z,up",
-      "--disable=C0301"
+      "--disable=C0301",
+      "--disable=R0902"
     ],
     "http.proxyStrictSSL": false,
     "workbench.colorTheme": "Tomorrow Night Blue",
