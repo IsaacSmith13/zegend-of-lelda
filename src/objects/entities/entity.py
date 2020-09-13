@@ -42,7 +42,14 @@ class Entity(Object):
 
     def add_direction(self, direction):
         if direction not in self.current_directions:
-            self.current_directions.append(direction)
+            if direction == DIRECTIONS.right and DIRECTIONS.left not in self.current_directions:
+                self.current_directions.append(direction)
+            elif direction == DIRECTIONS.left and DIRECTIONS.right not in self.current_directions:
+                self.current_directions.append(direction)
+            elif direction == DIRECTIONS.down and DIRECTIONS.up not in self.current_directions:
+                self.current_directions.append(direction)
+            elif direction == DIRECTIONS.up and DIRECTIONS.down not in self.current_directions:
+                self.current_directions.append(direction)
 
     def remove_direction(self, direction):
         if direction in self.current_directions:
@@ -52,20 +59,14 @@ class Entity(Object):
         if len(self.current_directions) == 0:
             self.sprite_sheet.reset_frame()
         else:
-            right = down = left = up = False
-
             for direction in self.current_directions:
-                if direction == DIRECTIONS.right and not left:
-                    right = True
+                if direction == DIRECTIONS.right:
                     self.set_x(self.x + self.movespeed * delta)
-                elif direction == DIRECTIONS.down and not up:
-                    down = True
+                elif direction == DIRECTIONS.down:
                     self.set_y(self.y + self.movespeed * delta)
-                elif direction == DIRECTIONS.left and not right:
-                    left = True
+                elif direction == DIRECTIONS.left:
                     self.set_x(self.x - self.movespeed * delta)
-                elif direction == DIRECTIONS.up and not down:
-                    up = True
+                elif direction == DIRECTIONS.up:
                     self.set_y(self.y - self.movespeed * delta)
 
             self.sprite_sheet.update_frame(delta=delta, direction=self.current_directions[0])
