@@ -6,7 +6,7 @@ from src.objects.entities.players.player import Player
 from src.models.colors import WHITE
 from src.models.entities import DIRECTIONS
 from src.loaders.level_loader import load_level
-from src.configuration.configuration import HORIZONTAL_TILES_ON_CAMERA, GLOBAL_OBJECT_SIZE, TILE_BUFFER, VERTICAL_TILES_ON_CAMERA
+from src.configuration.configuration import HORIZONTAL_TILES_ON_CAMERA, GLOBAL_OBJECT_SIZE, VERTICAL_TILES_ON_CAMERA
 from .game_state import GameState
 
 
