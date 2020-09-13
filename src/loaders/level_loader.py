@@ -7,6 +7,7 @@ def load_level(name):
     data = pytmx.load_pygame(get_file_path_from_name(name, FILE_TYPES.level), pixelalpha=True)
 
     level = DotMap(
+        data=data,
         level_height=data.height * data.tileheight,
         level_width=data.width * data.tilewidth,
         tile_height=data.tileheight,
@@ -19,18 +20,13 @@ def load_level(name):
         if isinstance(layer, pytmx.TiledTileLayer):
             layer_data = []
 
-            for x, y, global_id in layer:
-                tile_asset = data.get_tile_image_by_gid(global_id)
+            for x, _, global_id in layer:
+                if len(layer_data) <= x:
+                    layer_data.append([])
 
-                if tile_asset:
-                    layer_data.append(DotMap(
-                        asset=tile_asset,
-                        global_id=global_id,
-                        x=x * data.tilewidth,
-                        y=y * data.tileheight
-                    ))
+                layer_data[x].append(global_id)
 
-            tile_map.append(layer_data)
+        tile_map.append(layer_data)
 
     level.tile_map = tile_map
     return level

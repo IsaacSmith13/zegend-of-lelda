@@ -1,6 +1,6 @@
 import pygame
 from src.utils.get_file_path import get_file_path_from_name, FILE_TYPES
-from src.models.objects import GLOBAL_OBJECT_SIZE
+from src.configuration.configuration import GLOBAL_OBJECT_SIZE
 from src.models.entities import DIRECTIONS, ENTITIES, MILLISECONDS_PER_FRAME
 
 
