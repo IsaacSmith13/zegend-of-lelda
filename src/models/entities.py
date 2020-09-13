@@ -7,6 +7,6 @@ DIRECTIONS = DotMap(
     up=DotMap(name="up", value=3)
 )
 
-DEFAULT_MOVESPEED = 0.15
+DEFAULT_MOVESPEED = 0.2
 ENTITIES = DotMap(player="player")
 MILLISECONDS_PER_FRAME = 80

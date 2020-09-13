@@ -1,6 +1,6 @@
 import pygame
 from src.objects.entities.sprite_sheet import SpriteSheet, ENTITIES
-from src.models.objects import GLOBAL_OBJECT_SIZE
+from src.configuration.configuration import GLOBAL_OBJECT_SIZE
 from src.models.entities import DIRECTIONS
 
 
