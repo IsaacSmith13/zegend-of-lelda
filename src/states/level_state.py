@@ -80,10 +80,10 @@ class LevelState(GameState):
                 y_display = 0
 
                 for y in range(starting_y_tile, ending_y_tile):
-                    asset = self.data.get_tile_image_by_gid(layer[x][y])
+                    image = layer[x][y].get_image()
 
-                    if asset:
-                        self.map.blit(asset, (x_display, y_display))
+                    if image:
+                        self.map.blit(image, (x_display, y_display))
 
                     y_display += GLOBAL_OBJECT_SIZE
 

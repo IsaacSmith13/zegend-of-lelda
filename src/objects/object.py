@@ -25,6 +25,12 @@ class Object(pygame.sprite.Sprite):
     def set_collidable(self, collidable):
         self.collidable = collidable
 
+    def get_image(self):
+        return self.image
+
+    def get_rect(self):
+        return self.rect
+
     def get_height(self):
         return self.height
 

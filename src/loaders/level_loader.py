@@ -1,6 +1,7 @@
 from dotmap import DotMap
 import pytmx
 from src.utils.get_file_path import get_file_path_from_name, FILE_TYPES
+from src.objects.terrain.tile import Tile
 
 
 def load_level(name):
@@ -20,11 +21,17 @@ def load_level(name):
         if isinstance(layer, pytmx.TiledTileLayer):
             layer_data = []
 
-            for x, _, global_id in layer:
+            for x, y, global_id in layer:
                 if len(layer_data) <= x:
                     layer_data.append([])
 
-                layer_data[x].append(global_id)
+                properties = data.get_tile_properties_by_gid(global_id)
+                layer_data[x].append(Tile(
+                    collidable=bool(properties and properties["collidable"]),
+                    image=data.get_tile_image_by_gid(global_id),
+                    x=x,
+                    y=y
+                ))
 
         tile_map.append(layer_data)
 
