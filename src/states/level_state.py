@@ -28,7 +28,7 @@ class LevelState(GameState):
 
         self.camera = Camera(level_height=level.level_height, level_width=level.level_width)
 
-        self.data = level.data
+        self.collidable_tiles = level.collidable_tiles
         self.tile_map = level.tile_map
 
         self.name = name
@@ -72,6 +72,19 @@ class LevelState(GameState):
 
         starting_y_tile = max(self.camera.get_y_in_tiles(), 0)
         ending_y_tile = min(self.camera.get_y_in_tiles() + VERTICAL_TILES_ON_CAMERA, len(self.tile_map[0][0]))
+
+        # maybe make front tiles separate array? then loop over each like for layer in [terrain, tiles]?
+        # then use only the front layer to check collision
+        # use stuff from collisionhandler in java
+        # add and subtract x/y from player with .get_movespeed() and .get_x()
+        #  check collision with the new position
+        # one direction at a time? or hori/vert grouped?
+        # log times to see how efficient each collision check may be
+        # maybe can just check collision with each sprite group
+        #  then move player to the edge of the tiles collided
+        #  like player.set_x(collided_tile.get_x() - player.width / height()) or something?
+        #  might leverage pygame's built in logic/workflows better
+        #  than making another 600 line collision handler
 
         for layer in self.tile_map:
             x_display = 0

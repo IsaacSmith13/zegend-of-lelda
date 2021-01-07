@@ -19,7 +19,7 @@ class Object(pygame.sprite.Sprite):
     def _generate_rect(self):
         self.rect = pygame.Rect(self.x, self.y, self.width, self.height)
 
-    def get_collidable(self):
+    def is_collidable(self):
         return self.collidable
 
     def set_collidable(self, collidable):
